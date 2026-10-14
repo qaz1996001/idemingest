@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: idemingest
+Version: 0.1.0
+Summary: Idempotent sensor-data ingestion: replay safety instead of exactly-once delivery
+License: MIT
+Requires-Python: >=3.10
+Provides-Extra: dev
+Requires-Dist: pytest>=7; extra == "dev"
