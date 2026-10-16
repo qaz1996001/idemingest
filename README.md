@@ -1,3 +1,5 @@
+*English ｜ [繁體中文](README.zh-TW.md)*
+
 # idemingest — replay safety instead of exactly-once delivery
 
 A minimal, runnable demonstration of one design decision: **when sensor data
