@@ -31,6 +31,8 @@ duplicates harmless.
 **Deduplicate on `(device_id, content_fingerprint)`, and make the recovery path
 the same code as the normal path.**
 
+> Diagram: [docs/design.md § 1](docs/design.md#1-the-dedup-key-and-why-recovery-is-not-a-separate-path)
+
 | | Two-phase commit | Idempotent replay |
 |---|---|---|
 | Needs a coordinator | yes | no |
@@ -63,6 +65,8 @@ Retrying a deterministic failure is how an ingestion queue dies: the poison
 message comes back forever and starves everything behind it. The taxonomy has
 exactly two members on purpose — *which* parser failed is detail for the log,
 not an input to the retry decision.
+
+> Diagram: [docs/design.md § 2](docs/design.md#2-why-deterministic-failures-are-never-retried)
 
 ### Order of operations
 
@@ -136,6 +140,6 @@ industrial IoT platform, where sensor data had to land in two stores with no
 distributed transaction available and the uplink was unreliable.
 **No code from that system is used here** — the repository was written from
 nothing for this demonstration. What carries over is the reasoning, which is
-written up at length in the accompanying design document.
+in [docs/design.md](docs/design.md).
 
 MIT licensed.
