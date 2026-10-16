@@ -10,6 +10,8 @@ uv run --with pytest pytest -q      # 15 passed
 
 不需要任何外部服務。沒有 broker、沒有伺服器、不連網路。唯一的相依是 `pytest`。
 
+程式實際怎麼跑的四個視圖——程式流程、資料流、資料狀態、使用情境——在 [docs/architecture.zh-TW.md](docs/architecture.zh-TW.md)。
+
 ---
 
 ## 問題

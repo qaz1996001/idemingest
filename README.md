@@ -13,6 +13,9 @@ uv run --with pytest pytest -q      # 15 passed
 No external services. No broker, no server, no network. `pytest` is the only
 dependency.
 
+Four views of what the code does -- control flow, data flow, state transitions
+and usage scenarios -- are in [docs/architecture.md](docs/architecture.md).
+
 ---
 
 ## The problem

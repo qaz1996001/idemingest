@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "mode": "architecture",
+  "template_type": "architecture",
+  "style": 1,
+  "quality_profile": "showcase",
+  "text_policy": "strict",
+  "width": 1000,
+  "height": 750,
+  "title": "程式流程：四個步驟的順序本身就是設計",
+  "subtitle": "去重短路讓重放免費；驗證排在寫入之前，壞批次進不了重試迴圈",
+  "containers": [],
+  "nodes": [
+    {
+      "id": "b",
+      "kind": "rect",
+      "x": 36,
+      "y": 112,
+      "width": 300,
+      "height": 64,
+      "label": "1　算批次指紋",
+      "sublabel": "檔名排序後取 sha256，無 I/O",
+      "fill": "#ffffff",
+      "stroke": "#cbd5e1",
+      "flat": true
+    },
+    {
+      "id": "seen",
+      "kind": "hexagon",
+      "x": 36,
+      "y": 216,
+      "width": 300,
+      "height": 76,
+      "label": "2　存過了嗎",
+      "sublabel": "鍵 = 裝置編號 + 指紋",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6"
+    },
+    {
+      "id": "valid",
+      "kind": "hexagon",
+      "x": 36,
+      "y": 332,
+      "width": 300,
+      "height": 76,
+      "label": "3　驗證",
+      "sublabel": "確定性失敗在此終結",
+      "fill": "#ffffff",
+      "stroke": "#cbd5e1"
+    },
+    {
+      "id": "write",
+      "kind": "double_rect",
+      "x": 36,
+      "y": 460,
+      "width": 300,
+      "height": 76,
+      "label": "4　單一交易內寫入",
+      "sublabel": "批次列與檔案列全有或全無",
+      "fill": "#ffffff",
+      "stroke": "#334155"
+    },
+    {
+      "id": "dup",
+      "kind": "rect",
+      "x": 624,
+      "y": 216,
+      "width": 328,
+      "height": 76,
+      "label": "DUPLICATE",
+      "sublabel": "attempts = 0，什麼都沒碰",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6"
+    },
+    {
+      "id": "fail",
+      "kind": "rect",
+      "x": 624,
+      "y": 338,
+      "width": 328,
+      "height": 64,
+      "label": "FAILED（確定性）",
+      "sublabel": "CorruptFile：記錄後只試一次",
+      "fill": "#fce8e6",
+      "stroke": "#a50e0e"
+    },
+    {
+      "id": "retryn",
+      "kind": "rect",
+      "x": 624,
+      "y": 576,
+      "width": 328,
+      "height": 64,
+      "label": "有上限地重試（只包步驟 4）",
+      "sublabel": "TransientError 才走這裡；確定性失敗不重試",
+      "fill": "#fff7ed",
+      "stroke": "#f97316"
+    },
+    {
+      "id": "stored",
+      "kind": "rect",
+      "x": 624,
+      "y": 460,
+      "width": 328,
+      "height": 76,
+      "label": "STORED",
+      "sublabel": "commit 之後才算數",
+      "fill": "#e6f4ea",
+      "stroke": "#1e7e34"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "f1",
+      "source": "b",
+      "target": "seen",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "read"
+    },
+    {
+      "id": "f2",
+      "source": "seen",
+      "target": "dup",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "feedback"
+    },
+    {
+      "id": "f3",
+      "source": "seen",
+      "target": "valid",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "control"
+    },
+    {
+      "id": "f4",
+      "source": "valid",
+      "target": "fail",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "feedback"
+    },
+    {
+      "id": "f5",
+      "source": "valid",
+      "target": "write",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "control"
+    },
+    {
+      "id": "f6",
+      "source": "write",
+      "target": "stored",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "write"
+    }
+  ],
+  "legend_orientation": "horizontal",
+  "legend_x": 36,
+  "legend_y": 672,
+  "legend": [
+    {
+      "flow": "read",
+      "label": "進入"
+    },
+    {
+      "flow": "control",
+      "label": "往下一步"
+    },
+    {
+      "flow": "feedback",
+      "label": "短路／失敗"
+    },
+    {
+      "flow": "write",
+      "label": "成功落地"
+    }
+  ],
+  "footer": "replay() 就是對 ingest() 跑迴圈 —— 恢復路徑就是每天在跑的那一條，所以它不會偷偷腐爛",
+  "footer_x": 36,
+  "footer_y": 716
+}

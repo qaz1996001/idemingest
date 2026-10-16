@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "mode": "architecture",
+  "template_type": "architecture",
+  "style": 1,
+  "quality_profile": "showcase",
+  "text_policy": "strict",
+  "width": 1000,
+  "height": 580,
+  "title": "資料流：從一批檔案到三張表",
+  "subtitle": "指紋在排序後計算，所以上傳順序改變不了它；寫入在單一交易內完成",
+  "containers": [
+    {
+      "id": "db",
+      "x": 648,
+      "y": 88,
+      "width": 328,
+      "height": 348,
+      "label": "SQLite：寫入在單一交易內",
+      "stroke": "#334155",
+      "fill": "none"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "batch",
+      "kind": "rect",
+      "x": 36,
+      "y": 116,
+      "width": 250,
+      "height": 76,
+      "label": "Batch(File…)",
+      "sublabel": "一次量測的所有檔案",
+      "fill": "#ffffff",
+      "stroke": "#cbd5e1",
+      "flat": true
+    },
+    {
+      "id": "fp",
+      "kind": "hexagon",
+      "x": 36,
+      "y": 232,
+      "width": 250,
+      "height": 68,
+      "label": "依檔名排序後雜湊",
+      "sublabel": "name + sha256 逐檔累加",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6"
+    },
+    {
+      "id": "key",
+      "kind": "rect",
+      "x": 336,
+      "y": 232,
+      "width": 272,
+      "height": 68,
+      "label": "去重鍵",
+      "sublabel": "(device_id, fingerprint)",
+      "fill": "#eff6ff",
+      "stroke": "#3b82f6"
+    },
+    {
+      "id": "t1",
+      "kind": "cylinder",
+      "x": 672,
+      "y": 124,
+      "width": 280,
+      "height": 68,
+      "label": "batches",
+      "sublabel": "一批一列，含 file_count",
+      "fill": "#ffffff",
+      "stroke": "#334155"
+    },
+    {
+      "id": "t2",
+      "kind": "cylinder",
+      "x": 672,
+      "y": 232,
+      "width": 280,
+      "height": 68,
+      "label": "files",
+      "sublabel": "檔名、大小、sha256",
+      "fill": "#ffffff",
+      "stroke": "#334155"
+    },
+    {
+      "id": "t3",
+      "kind": "cylinder",
+      "x": 672,
+      "y": 340,
+      "width": 280,
+      "height": 68,
+      "label": "failures",
+      "sublabel": "確定性失敗的原因",
+      "fill": "#fce8e6",
+      "stroke": "#a50e0e"
+    },
+    {
+      "id": "snap",
+      "kind": "rect",
+      "x": 336,
+      "y": 416,
+      "width": 272,
+      "height": 68,
+      "label": "snapshot()",
+      "sublabel": "測試比對的依據",
+      "fill": "#e6f4ea",
+      "stroke": "#1e7e34"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "g1",
+      "source": "batch",
+      "target": "fp",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "read"
+    },
+    {
+      "id": "g2",
+      "source": "fp",
+      "target": "key",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "control"
+    },
+    {
+      "id": "g3",
+      "source": "key",
+      "target": "t2",
+      "source_port": "right",
+      "target_port": "left",
+      "flow": "write"
+    },
+    {
+      "id": "g4",
+      "source": "key",
+      "target": "snap",
+      "source_port": "bottom",
+      "target_port": "top",
+      "flow": "feedback"
+    }
+  ],
+  "legend_orientation": "horizontal",
+  "legend_x": 36,
+  "legend_y": 520,
+  "legend": [
+    {
+      "flow": "read",
+      "label": "進料"
+    },
+    {
+      "flow": "control",
+      "label": "算鍵"
+    },
+    {
+      "flow": "write",
+      "label": "落地"
+    },
+    {
+      "flow": "feedback",
+      "label": "讀回驗證"
+    }
+  ]
+}

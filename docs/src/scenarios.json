@@ -1,0 +1,36 @@
+{
+  "schema_version": 1, "mode": "architecture", "template_type": "architecture",
+  "style": 1, "quality_profile": "showcase", "text_policy": "strict",
+  "width": 1000, "height": 790,
+  "title": "使用情境：15 項測試覆蓋的六種真實情況",
+  "subtitle": "每一條都對應一個具名測試，不是示意",
+  "nodes": [
+    { "id": "n1", "kind": "rect", "x": 36, "y": 100, "width": 300, "height": 60, "label": "首次進料", "sublabel": "全新的一批", "fill": "#ffffff", "stroke": "#cbd5e1", "flat": true },
+    { "id": "r1", "kind": "rect", "x": 400, "y": 100, "width": 560, "height": 60, "label": "STORED", "sublabel": "一列 batch，N 列 file", "fill": "#e6f4ea", "stroke": "#1e7e34" },
+    { "id": "n2", "kind": "rect", "x": 36, "y": 204, "width": 300, "height": 60, "label": "重放十次", "sublabel": "同一批再跑", "fill": "#ffffff", "stroke": "#cbd5e1", "flat": true },
+    { "id": "r2", "kind": "rect", "x": 400, "y": 204, "width": 560, "height": 60, "label": "快照位元組相同", "sublabel": "仍是一列 batch，零列多餘的 file", "fill": "#eff6ff", "stroke": "#3b82f6" },
+    { "id": "n3", "kind": "rect", "x": 36, "y": 308, "width": 300, "height": 60, "label": "檔案順序顛倒", "sublabel": "重試常見", "fill": "#ffffff", "stroke": "#cbd5e1", "flat": true },
+    { "id": "r3", "kind": "rect", "x": 400, "y": 308, "width": 560, "height": 60, "label": "指紋不變", "sublabel": "排序後才雜湊，所以仍判為同一批", "fill": "#eff6ff", "stroke": "#3b82f6" },
+    { "id": "n4", "kind": "rect", "x": 36, "y": 412, "width": 300, "height": 60, "label": "壞檔", "sublabel": "重試上限設 5", "fill": "#ffffff", "stroke": "#cbd5e1", "flat": true },
+    { "id": "r4", "kind": "rect", "x": 400, "y": 412, "width": 560, "height": 60, "label": "只被驗證一次", "sublabel": "毒訊息不會回到佇列把後面餓死", "fill": "#fce8e6", "stroke": "#a50e0e" },
+    { "id": "n5", "kind": "rect", "x": 36, "y": 516, "width": 300, "height": 60, "label": "交易中途被中斷", "sublabel": "以資料庫觸發器注入", "fill": "#ffffff", "stroke": "#cbd5e1", "flat": true },
+    { "id": "r5", "kind": "rect", "x": 400, "y": 516, "width": 560, "height": 60, "label": "批次列與檔案列都是 0", "sublabel": "故障排除後，同一批以乾淨的首次進料完成", "fill": "#fff7ed", "stroke": "#f97316" },
+    { "id": "n6", "kind": "rect", "x": 36, "y": 620, "width": 300, "height": 60, "label": "兩台裝置內容相同", "sublabel": "合法的巧合", "fill": "#ffffff", "stroke": "#cbd5e1", "flat": true },
+    { "id": "r6", "kind": "rect", "x": 400, "y": 620, "width": 560, "height": 60, "label": "保留兩筆", "sublabel": "鍵是裝置加內容，不是只有內容", "fill": "#e6f4ea", "stroke": "#1e7e34" }
+  ],
+  "arrows": [
+    { "id": "c1", "source": "n1", "target": "r1", "source_port": "right", "target_port": "left", "flow": "write" },
+    { "id": "c2", "source": "n2", "target": "r2", "source_port": "right", "target_port": "left", "flow": "read" },
+    { "id": "c3", "source": "n3", "target": "r3", "source_port": "right", "target_port": "left", "flow": "read" },
+    { "id": "c4", "source": "n4", "target": "r4", "source_port": "right", "target_port": "left", "flow": "feedback" },
+    { "id": "c5", "source": "n5", "target": "r5", "source_port": "right", "target_port": "left", "flow": "control" },
+    { "id": "c6", "source": "n6", "target": "r6", "source_port": "right", "target_port": "left", "flow": "write" }
+  ],
+  "legend_orientation": "horizontal", "legend_x": 36, "legend_y": 740,
+  "legend": [
+    { "flow": "write", "label": "落地" },
+    { "flow": "read", "label": "重放安全" },
+    { "flow": "feedback", "label": "失敗不重試" },
+    { "flow": "control", "label": "原子性" }
+  ]
+}

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" width="1000" height="750" data-generator="fireworks-tech-graph" data-schema-version="1" data-text-metrics="heuristic-v1" data-style-id="1" data-visual-theme="Flat Icon" data-diagram-type="architecture" data-motion-scene="" data-semantic-profile="generic" data-semantic-valid="true" data-quality-profile="showcase" data-max-bends-per-edge="2" data-max-total-bends="8" data-max-route-stretch="1.35" data-max-bridged-crossings="0" data-min-node-gap="40.0" data-min-container-gutter="20.0" data-min-label-clearance="4.0" data-min-segment-length="16.0">
+  <defs>
+    <marker id="arrowA" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowB" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+    <marker id="arrowC" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowE" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f97316"/>
+    </marker>
+    <marker id="arrowF" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowH" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+    </marker>
+    <filter id="shadowSoft" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <filter id="shadowGlass" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#020617" flood-opacity="0.28"/>
+    </filter>
+    <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+    .title { font-size: 30px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 14px; font-weight: 500; fill: #6b7280; }
+    .section { font-size: 13px; font-weight: 700; fill: #2563eb; letter-spacing: 1.4px; }
+    .section-sub { font-size: 12px; font-weight: 500; fill: #64748b; }
+    .node-title { font-weight: 700; fill: #111827; }
+    .node-sub { font-weight: 500; fill: #6b7280; }
+    .node-type { font-size: 12px; font-weight: 700; fill: #64748b; letter-spacing: 0.08em; }
+    .arrow-label { font-size: 12px; font-weight: 600; fill: #6b7280; }
+    .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .footnote { font-size: 12px; font-weight: 500; fill: #64748b; }
+    .metric-label { font-size: 8.5px; font-weight: 700; fill: #64748b; text-transform: uppercase; }
+    .metric-value { font-size: 9.5px; font-weight: 700; fill: #111827; }
+    </style>
+  </defs>
+  <rect data-graph-role="background" width="1000.0" height="750.0" fill="#ffffff"/>
+  <text x="500.0" y="56" text-anchor="middle" class="title">程式流程：四個步驟的順序本身就是設計</text>
+  <text x="500.0" y="82" text-anchor="middle" class="subtitle">去重短路讓重放免費；驗證排在寫入之前，壞批次進不了重試迴圈</text>
+  <path id="f1" data-graph-role="edge" data-edge-id="f1" data-source="b" data-target="seen" data-edge-kind="flow" data-topic-id="" data-flow="read" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 186,176 L 186,216" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowC)"/>
+  <path id="f2" data-graph-role="edge" data-edge-id="f2" data-source="seen" data-target="dup" data-edge-kind="flow" data-topic-id="" data-flow="feedback" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 336,254 L 624,254" fill="none" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowG)"/>
+  <path id="f3" data-graph-role="edge" data-edge-id="f3" data-source="seen" data-target="valid" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 186,292 L 186,332" fill="none" stroke="#7c3aed" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="f4" data-graph-role="edge" data-edge-id="f4" data-source="valid" data-target="fail" data-edge-kind="flow" data-topic-id="" data-flow="feedback" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 336,370 L 624,370" fill="none" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowG)"/>
+  <path id="f5" data-graph-role="edge" data-edge-id="f5" data-source="valid" data-target="write" data-edge-kind="flow" data-topic-id="" data-flow="control" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 186,408 L 186,460" fill="none" stroke="#7c3aed" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowA)"/>
+  <path id="f6" data-graph-role="edge" data-edge-id="f6" data-source="write" data-target="stored" data-edge-kind="flow" data-topic-id="" data-flow="write" data-motion-role="" data-motion-stage="" data-motion-order="" data-protocol="" data-via="" data-critical-path-id="" data-critical-hop="" data-critical-hops="" data-critical="false" data-bends="0" data-route-stretch="1.0" data-bridges="" d="M 336,498 L 624,498" fill="none" stroke="#10b981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowB)"/>
+  <g id="node-b" data-graph-role="node" data-node-id="b" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="36,112,336,176">
+  <rect x="36.0" y="112.0" width="300.0" height="64.0" rx="10.0" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8"/>
+  <text data-text-role="title" data-full-text="1　算批次指紋" data-text-max-width="276.0" x="186.0" y="144.0" text-anchor="middle" class="node-title" font-size="18">1 算批次指紋</text>
+  <text data-text-role="subtitle" data-full-text="檔名排序後取 sha256，無 I/O" data-text-max-width="276.0" x="186.0" y="166.0" text-anchor="middle" class="node-sub" font-size="12">檔名排序後取 sha256，無 I/O</text>
+  </g>
+  <g id="node-seen" data-graph-role="node" data-node-id="seen" data-semantic-role="hexagon" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="36,216,336,292">
+  <path d="M 58.0 216.0 L 314.0 216.0 L 336.0 254.0 L 314.0 292.0 L 58.0 292.0 L 36.0 254.0 Z" fill="#eff6ff" stroke="#3b82f6" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <text data-text-role="title" data-full-text="2　存過了嗎" data-text-max-width="248.0" x="186.0" y="254.0" text-anchor="middle" class="node-title" font-size="18">2 存過了嗎</text>
+  <text data-text-role="subtitle" data-full-text="鍵 = 裝置編號 + 指紋" data-text-max-width="248.0" x="186.0" y="276.0" text-anchor="middle" class="node-sub" font-size="12">鍵 = 裝置編號 + 指紋</text>
+  </g>
+  <g id="node-valid" data-graph-role="node" data-node-id="valid" data-semantic-role="hexagon" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="36,332,336,408">
+  <path d="M 58.0 332.0 L 314.0 332.0 L 336.0 370.0 L 314.0 408.0 L 58.0 408.0 L 36.0 370.0 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <text data-text-role="title" data-full-text="3　驗證" data-text-max-width="248.0" x="186.0" y="370.0" text-anchor="middle" class="node-title" font-size="18">3 驗證</text>
+  <text data-text-role="subtitle" data-full-text="確定性失敗在此終結" data-text-max-width="248.0" x="186.0" y="392.0" text-anchor="middle" class="node-sub" font-size="12">確定性失敗在此終結</text>
+  </g>
+  <g id="node-write" data-graph-role="node" data-node-id="write" data-semantic-role="double_rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="36,460,336,536">
+  <rect x="36.0" y="460.0" width="300.0" height="76.0" rx="10.0" fill="#ffffff" stroke="#334155" stroke-width="2.0" filter="url(#shadowSoft)"/>
+  <rect x="42.0" y="466.0" width="288.0" height="64.0" rx="7.0" fill="none" stroke="#334155" stroke-width="1.2" opacity="0.65"/>
+  <text data-text-role="title" data-full-text="4　單一交易內寫入" data-text-max-width="268.0" x="186.0" y="498.0" text-anchor="middle" class="node-title" font-size="18">4 單一交易內寫入</text>
+  <text data-text-role="subtitle" data-full-text="批次列與檔案列全有或全無" data-text-max-width="268.0" x="186.0" y="520.0" text-anchor="middle" class="node-sub" font-size="12">批次列與檔案列全有或全無</text>
+  </g>
+  <g id="node-dup" data-graph-role="node" data-node-id="dup" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="624,216,952,292">
+  <rect x="624.0" y="216.0" width="328.0" height="76.0" rx="10.0" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text data-text-role="title" data-full-text="DUPLICATE" data-text-max-width="304.0" x="788.0" y="254.0" text-anchor="middle" class="node-title" font-size="18">DUPLICATE</text>
+  <text data-text-role="subtitle" data-full-text="attempts = 0，什麼都沒碰" data-text-max-width="304.0" x="788.0" y="276.0" text-anchor="middle" class="node-sub" font-size="12">attempts = 0，什麼都沒碰</text>
+  </g>
+  <g id="node-fail" data-graph-role="node" data-node-id="fail" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="624,338,952,402">
+  <rect x="624.0" y="338.0" width="328.0" height="64.0" rx="10.0" fill="#fce8e6" stroke="#a50e0e" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text data-text-role="title" data-full-text="FAILED（確定性）" data-text-max-width="304.0" x="788.0" y="370.0" text-anchor="middle" class="node-title" font-size="18">FAILED（確定性）</text>
+  <text data-text-role="subtitle" data-full-text="CorruptFile：記錄後只試一次" data-text-max-width="304.0" x="788.0" y="392.0" text-anchor="middle" class="node-sub" font-size="12">CorruptFile：記錄後只試一次</text>
+  </g>
+  <g id="node-retryn" data-graph-role="node" data-node-id="retryn" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="624,576,952,640">
+  <rect x="624.0" y="576.0" width="328.0" height="64.0" rx="10.0" fill="#fff7ed" stroke="#f97316" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text data-text-role="title" data-full-text="有上限地重試（只包步驟 4）" data-text-max-width="304.0" x="788.0" y="608.0" text-anchor="middle" class="node-title" font-size="18">有上限地重試（只包步驟 4）</text>
+  <text data-text-role="subtitle" data-full-text="TransientError 才走這裡；確定性失敗不重試" data-text-max-width="304.0" x="788.0" y="630.0" text-anchor="middle" class="node-sub" font-size="12">TransientError 才走這裡；確定性失敗不重試</text>
+  </g>
+  <g id="node-stored" data-graph-role="node" data-node-id="stored" data-semantic-role="rect" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="624,460,952,536">
+  <rect x="624.0" y="460.0" width="328.0" height="76.0" rx="10.0" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text data-text-role="title" data-full-text="STORED" data-text-max-width="304.0" x="788.0" y="498.0" text-anchor="middle" class="node-title" font-size="18">STORED</text>
+  <text data-text-role="subtitle" data-full-text="commit 之後才算數" data-text-max-width="304.0" x="788.0" y="520.0" text-anchor="middle" class="node-sub" font-size="12">commit 之後才算數</text>
+  </g>
+  <g id="legend" data-graph-role="legend">
+    <rect id="legend-zone" data-graph-role="reserved" data-reserved-kind="legend" x="24" y="652" width="454" height="46" rx="10" fill="none" stroke="none"/>
+    <line data-graph-role="decoration" x1="34.0" y1="666.0" x2="64.0" y2="666.0" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrowC)"/>
+    <text data-graph-role="decoration" x="74.0" y="670.0" class="legend">進入</text>
+    <line data-graph-role="decoration" x1="126.0" y1="666.0" x2="156.0" y2="666.0" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+    <text data-graph-role="decoration" x="166.0" y="670.0" class="legend">往下一步</text>
+    <line data-graph-role="decoration" x1="242.0" y1="666.0" x2="272.0" y2="666.0" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)"/>
+    <text data-graph-role="decoration" x="282.0" y="670.0" class="legend">短路／失敗</text>
+    <line data-graph-role="decoration" x1="370.0" y1="666.0" x2="400.0" y2="666.0" stroke="#10b981" stroke-width="2.4" marker-end="url(#arrowB)"/>
+    <text data-graph-role="decoration" x="410.0" y="670.0" class="legend">成功落地</text>
+  </g>
+  <g id="footer" data-graph-role="reserved" data-graph-bounds="36,704,407,720">
+  <text x="36.0" y="716.0" class="footnote">replay() 就是對 ingest() 跑迴圈 —— 恢復路徑就是每天在跑的那一條，所以它不會偷偷腐爛</text>
+  </g>
+</svg>

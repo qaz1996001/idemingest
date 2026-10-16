@@ -1,0 +1,30 @@
+{
+  "schema_version": 1, "mode": "architecture", "template_type": "architecture",
+  "style": 1, "quality_profile": "showcase", "text_policy": "strict",
+  "width": 1000, "height": 620,
+  "title": "資料狀態：三種結果，以及每張表的列數變化",
+  "subtitle": "右欄就是測試斷言的對象 —— 重放之後快照必須位元組相同",
+  "nodes": [
+    { "id": "new", "kind": "rect", "x": 36, "y": 112, "width": 300, "height": 72, "label": "一批資料進來", "sublabel": "尚未決定結果", "fill": "#ffffff", "stroke": "#cbd5e1", "flat": true },
+    { "id": "dup", "kind": "rect", "x": 36, "y": 224, "width": 300, "height": 72, "label": "DUPLICATE", "sublabel": "鍵已存在", "fill": "#eff6ff", "stroke": "#3b82f6" },
+    { "id": "fail", "kind": "rect", "x": 36, "y": 336, "width": 300, "height": 72, "label": "FAILED", "sublabel": "驗證不過，或重試用盡", "fill": "#fce8e6", "stroke": "#a50e0e" },
+    { "id": "ok", "kind": "rect", "x": 36, "y": 448, "width": 300, "height": 72, "label": "STORED", "sublabel": "交易 commit", "fill": "#e6f4ea", "stroke": "#1e7e34" },
+    { "id": "rdup", "kind": "rect", "x": 400, "y": 224, "width": 560, "height": 72, "label": "batches +0　files +0　failures +0", "sublabel": "attempts = 0，寫入路徑根本沒進去", "fill": "#eff6ff", "stroke": "#3b82f6" },
+    { "id": "rfail", "kind": "rect", "x": 400, "y": 336, "width": 560, "height": 72, "label": "batches +0　files +0　failures +1", "sublabel": "壞檔只被驗證一次，即使重試上限設 5", "fill": "#fce8e6", "stroke": "#a50e0e" },
+    { "id": "rok", "kind": "rect", "x": 400, "y": 448, "width": 560, "height": 72, "label": "batches +1　files +N　failures +0", "sublabel": "中途失敗則三者都 +0，沒有半套", "fill": "#e6f4ea", "stroke": "#1e7e34" }
+  ],
+  "arrows": [
+    { "id": "s1", "source": "new", "target": "dup", "source_port": "bottom", "target_port": "top", "flow": "feedback" },
+    { "id": "s2", "source": "dup", "target": "fail", "source_port": "bottom", "target_port": "top", "flow": "control" },
+    { "id": "s3", "source": "fail", "target": "ok", "source_port": "bottom", "target_port": "top", "flow": "control" },
+    { "id": "s4", "source": "dup", "target": "rdup", "source_port": "right", "target_port": "left", "flow": "feedback" },
+    { "id": "s5", "source": "fail", "target": "rfail", "source_port": "right", "target_port": "left", "flow": "feedback" },
+    { "id": "s6", "source": "ok", "target": "rok", "source_port": "right", "target_port": "left", "flow": "write" }
+  ],
+  "legend_orientation": "horizontal", "legend_x": 36, "legend_y": 556,
+  "legend": [
+    { "flow": "feedback", "label": "短路或失敗" },
+    { "flow": "control", "label": "繼續判斷" },
+    { "flow": "write", "label": "落地" }
+  ]
+}
