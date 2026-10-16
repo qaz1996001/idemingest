@@ -132,8 +132,8 @@ Stated because a demo that hides its edges is not useful.
 ## Where this came from
 
 This is a from-scratch reimplementation of a design decision I made on an
-industrial IoT platform handling roughly 18 GB of vibration waveform per day,
-where data had to land in two stores with no distributed transaction available.
+industrial IoT platform, where sensor data had to land in two stores with no
+distributed transaction available and the uplink was unreliable.
 **No code from that system is used here** — the repository was written from
 nothing for this demonstration. What carries over is the reasoning, which is
 written up at length in the accompanying design document.
